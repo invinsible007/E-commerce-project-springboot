@@ -78,20 +78,14 @@
     	<repository>
     		<id>nexus</id>
     		<name>Nexus Releases</name>
-<<<<<<< HEAD
     		<url>http://3.90.139.240:8081/repository/maven-releases/</url>
-=======
-    		<url>https://your-nexus-host/repository/maven-releases/</url>
->>>>>>> development
+    		<url>http://3.90.139.240:8081/repository/maven-releases/</url>
   		</repository>
   		<snapshotRepository>
     		<id>nexus</id>
     		<name>Nexus Snapshots</name>
-<<<<<<< HEAD
     		<url>http://3.90.139.240:8081/repository/maven-snapshots/</url>
-=======
     		<url>https://3.90.139.240:8081/repository/maven-snapshots/</url>
->>>>>>> development
   		</snapshotRepository>
 	</distributionManagement>
 
