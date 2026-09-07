@@ -79,12 +79,10 @@
     		<id>nexus</id>
     		<name>Nexus Releases</name>
     		<url>http://3.90.139.240:8081/repository/maven-releases</url>
-    		<url>https://3.90.139.240:8081/repository/maven-releases</url>
   		</repository>
   		<snapshotRepository>
     		<id>nexus</id>
     		<name>Nexus Snapshots</name>
-    		<url>http://3.90.139.240:8081/repository/maven-snapshots</url>
     		<url>https://3.90.139.240:8081/repository/maven-snapshots</url>
   		</snapshotRepository>
 	</distributionManagement>
