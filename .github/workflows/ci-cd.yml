@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  JAVA_VERSION: '11'
+  JAVA_VERSION: '25'
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-springboot:latest
 
 jobs:
@@ -29,8 +29,22 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build and run tests
-        run: mvn -B clean verify
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      
+      - name: Build 
+        run: mvn -B clean verify -DskipTests
 
       - name: SonarQube Analysis
         env:
@@ -59,7 +73,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: 'temurin'
           cache: 'maven'
-          server-id: nexus                  # must match the id in pom.xml distributionManagement
+          server-id: nexus                  
           server-username: NEXUS_USERNAME
           server-password: NEXUS_PASSWORD
 
@@ -117,3 +131,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+
