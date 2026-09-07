@@ -9,7 +9,7 @@ FROM eclipse-temurin:11-jre
 WORKDIR /app
 
 # Non-root user (good practice)
-RUN addgroup --system app && adduser --system --ingrouproup app
+RUN addgroup --system app && adduser --system --ingroup app
 USER app
 
 COPY --from=build /app/target/*.jar app.jar
