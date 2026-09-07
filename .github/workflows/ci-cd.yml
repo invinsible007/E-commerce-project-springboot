@@ -9,7 +9,7 @@ on:
 
 env:
   JAVA_VERSION: '25'
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-springboot:latest
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-springboot
 
 jobs:
   build-and-analyze:
